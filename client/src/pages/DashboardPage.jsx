@@ -99,14 +99,31 @@ function DashboardPage() {
               {myClubs.map((club) => (
                 <div className="col-md-4 mb-4" key={club._id}>
                   <div className="card h-100 shadow-sm">
-                    {club.coverImage && (
+                    {/* {club.coverImage && (
                       <img
                         src={club.coverImage}
                         alt={club.name}
                         className="card-img-top"
                         style={{ height: "200px", objectFit: "cover" }}
                       />
-                    )}
+                    )} */}
+
+                    <img
+                      src={
+                        club.coverImage?.trim()
+                          ? club.coverImage
+                          : "https://media.istockphoto.com/id/1312039882/vector/coming-soon-loading.jpg?s=612x612&w=0&k=20&c=wIjdvr139iG1IZUVOmSfeLrRx6NXqBMxMJ026kMo2XY="
+                      }
+                      alt={club.name}
+                      className="card-img-top"
+                      style={{ height: "200px", objectFit: "cover" }}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src =
+                          "https://media.istockphoto.com/id/1312039882/vector/coming-soon-loading.jpg?s=612x612&w=0&k=20&c=wIjdvr139iG1IZUVOmSfeLrRx6NXqBMxMJ026kMo2XY=";
+                      }}
+                    />
+
                     <div className="card-body">
                       <h5 className="card-title">{club.name}</h5>
                       <p className="card-text">{club.description}</p>
@@ -153,14 +170,31 @@ function DashboardPage() {
               {myClubs.map((club) => (
                 <div className="col-md-4 mb-4" key={club._id}>
                   <div className="card h-100 shadow-sm">
-                    {club.coverImage && (
+                    {/* {club.coverImage && (
                       <img
                         src={club.coverImage}
                         alt="cover"
                         className="card-img-top"
                         style={{ height: "200px", objectFit: "cover" }}
                       />
-                    )}
+                    )} */}
+
+                    <img
+                      src={
+                        club.coverImage?.trim()
+                          ? club.coverImage
+                          : "https://media.istockphoto.com/id/1312039882/vector/coming-soon-loading.jpg?s=612x612&w=0&k=20&c=wIjdvr139iG1IZUVOmSfeLrRx6NXqBMxMJ026kMo2XY="
+                      }
+                      alt={club.name}
+                      className="card-img-top"
+                      style={{ height: "200px", objectFit: "cover" }}
+                      onError={(e) => {
+                        e.target.onerror = null;
+                        e.target.src =
+                          "https://media.istockphoto.com/id/1312039882/vector/coming-soon-loading.jpg?s=612x612&w=0&k=20&c=wIjdvr139iG1IZUVOmSfeLrRx6NXqBMxMJ026kMo2XY=";
+                      }}
+                    />
+
                     <div className="card-body">
                       <h5 className="card-title fw-bold">
                         <FaBook className="me-2" />

@@ -53,9 +53,7 @@ function ClubList() {
       try {
         const ratingsData = {};
         for (const club of clubsData) {
-          const res = await axios.get(
-            `${baseUrl}/reviews/${club._id}`
-          );
+          const res = await axios.get(`${baseUrl}/reviews/${club._id}`);
           const reviews = res.data;
           if (reviews.length > 0) {
             const total = reviews.reduce((sum, r) => sum + r.rating, 0);
@@ -169,14 +167,31 @@ function ClubList() {
                   onClick={() => handleCardClick(club._id)}
                   style={{ cursor: "pointer" }}
                 >
-                  {club.coverImage && (
-                    <img
-                      src={club.coverImage}
-                      alt={club.name}
-                      className="card-img-top"
-                      style={{ height: "200px", objectFit: "cover" }}
-                    />
-                  )}
+                  {/* {club.coverImage && (
+                    // <img
+                    //   src={club.coverImage}
+                    //   alt={club.name}
+                    //   className="card-img-top"
+                    //   style={{ height: "200px", objectFit: "cover" }}
+                    // />     
+                      )} */}
+
+                  <img
+                    src={
+                      club.coverImage?.trim()
+                        ? club.coverImage
+                        : "https://media.istockphoto.com/id/1312039882/vector/coming-soon-loading.jpg?s=612x612&w=0&k=20&c=wIjdvr139iG1IZUVOmSfeLrRx6NXqBMxMJ026kMo2XY="
+                    }
+                    alt={club.name}
+                    className="card-img-top"
+                    style={{ height: "200px", objectFit: "cover" }}
+                    onError={(e) => {
+                      e.target.onerror = null;
+                      e.target.src =
+                        "https://media.istockphoto.com/id/1312039882/vector/coming-soon-loading.jpg?s=612x612&w=0&k=20&c=wIjdvr139iG1IZUVOmSfeLrRx6NXqBMxMJ026kMo2XY=";
+                    }}
+                  />
+
                   <div className="card-body">
                     <h5 className="card-title">{club.name}</h5>
                     <p className="card-text">
